@@ -1,5 +1,7 @@
 import './globals.css'
 import Nav from "./auth/Nav"
+import QueryWrapper from "./auth/QueryWrapper"
+import { ReactNode } from 'react'
 
 export const metadata = {
   title: 'vondev fitness',
@@ -8,15 +10,17 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
+} : {
+  children: ReactNode
 }) {
   return (
     <html lang="en">
       <body className='mx-4 md:mx-48 xl:mx-96 bg-gray-200'>
-        {/* @ts-expect-error Server Component */}
-        <Nav />
-        {children}
+        <QueryWrapper>
+          {/* @ts-expect-error Server Component*/}
+          <Nav />
+          {children}
+        </QueryWrapper>
       </body>
     </html>
   )
