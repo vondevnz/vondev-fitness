@@ -21,6 +21,15 @@ model Post {
   comments  Comment[]
 }
 
+model Workout {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  title     String
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
+
 model Comment {
   id        String   @id @default(cuid())
   message   String
@@ -68,6 +77,7 @@ model User {
   sessions      Session[]
   posts         Post[]
   comments      Comment[]
+  workouts      Workout[]
 }
 
 model VerificationToken {
